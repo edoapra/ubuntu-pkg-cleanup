@@ -16,12 +16,13 @@ runs:
         sudo apt-get purge -y temurin-*-jdk  openjdk-*
         sudo apt-get purge -y powershell || true
         sudo apt-get purge -y docker-ce containerd.io || true
-        sudo apt-get purge -y docker-ce-cli podman || true
+        sudo apt-get purge -y docker-ce-cli podman kubectl || true
         sudo apt-get purge -y libclang-common-*dev || true
         sudo apt-get purge -y snapd || true
         sudo apt-get purge -y mysql-client-core* || true
         sudo apt-get purge -y llvm-*-dev
         sudo apt-get purge -y libclang-cpp* libllvm* || true
+        sudo apt-get purge -y python3-botocore || true
         if [[ $ubuntu_ver == "20.04" ]]; then
            sudo apt-get purge -y hhvm
            sudo apt-get purge -y libgl1-mesa-dri
@@ -29,5 +30,7 @@ runs:
         sudo apt-get -y clean
         sudo apt-get autoremove -y
         dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n | tail -30
+        dpkg-query -l | grep mesa-dr || true
+        dpkg-query -l | grep hhvm || true
         df -h
         fi
