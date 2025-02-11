@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Remove Ubuntu packages
+      - name: Remove Large Ubuntu packages
         uses: edoapra/ubuntu-pkg-cleanup@main
 ```
