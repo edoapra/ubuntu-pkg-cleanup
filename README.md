@@ -9,10 +9,10 @@ name: Clear large Ubuntu packages
 
 jobs:
   my-job:
-    name: Delete all caches
+    name: test
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Clear caches
+      - name: Remove Ubuntu packages
         uses: edoapra/ubuntu-pkg-cleanup@main
 ```
