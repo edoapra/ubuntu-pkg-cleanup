@@ -1,4 +1,6 @@
 name: Example
+
+on:
   schedule:
     - cron: '0 0 * * SUN'
   pull_request:
