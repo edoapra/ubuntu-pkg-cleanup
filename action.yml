@@ -10,7 +10,8 @@ runs:
         if [[ $(uname -s) == "Linux" ]]; then
         ubuntu_ver=$(cat /etc/os-release | grep VERSION_ID |cut -d \" -f 2)
         sudo apt-get purge -y azure-cli || true
-        sudo apt-get purge -y google-cloud-cli microsoft-edge-stable  google-chrome-stable firefox
+        sudo apt-get purge -y google-cloud-cli  google-chrome-stable firefox
+        sudo apt-get purge -y microsoft-edge-stable || true
         sudo apt-get purge -y dotnet-sdk-*
         sudo apt-get purge -y mono-devel || true
         sudo apt-get purge -y temurin-*-jdk  openjdk-*
