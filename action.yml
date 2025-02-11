@@ -28,6 +28,9 @@ runs:
         sudo apt-get purge -y python3-botocore || true
         sudo apt-get purge -y mongodb-* || true
         sudo apt-get purge -y esl-erlang || true
+        sudo apt-get purge -y r-* || true
+        sudo apt-get purge gcc-9 || true
+        sudo apt-get purge gcc-10 || true
         if [[ $ubuntu_ver == "20.04" ]]; then
            sudo apt-get purge -y hhvm
            sudo apt-get purge -y libgl1-mesa-dri
