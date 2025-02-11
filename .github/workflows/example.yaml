@@ -13,21 +13,37 @@ jobs:
   ubuntu-latest:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          path: ./.github/actions/ubuntu-pkg-cleanup
       - name: Ubuntu cleanup
         uses: ./.github/actions/ubuntu-pkg-cleanup
   ubuntu-24:
     runs-on: ubuntu-24.04
     steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          path: ./.github/actions/ubuntu-pkg-cleanup
       - name: Ubuntu cleanup
         uses: ./.github/actions/ubuntu-pkg-cleanup
   ubuntu-22:
     runs-on: ubuntu-22.04
     steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          path: ./.github/actions/ubuntu-pkg-cleanup
       - name: Ubuntu cleanup
         uses: ./.github/actions/ubuntu-pkg-cleanup
   ubuntu-20:
     runs-on: ubuntu-20.04
     steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          path: ./.github/actions/ubuntu-pkg-cleanup
       - name: Ubuntu cleanup
         uses: ./.github/actions/ubuntu-pkg-cleanup
           
