@@ -14,9 +14,7 @@ runs:
         sudo apt-get purge -y google-cloud-cli microsoft-edge-stable  google-chrome-stable firefox                                                      
         sudo apt-get purge -y dotnet-sdk-*                                                                                                              
         sudo apt-get purge -y temurin-*-jdk  openjdk-*                                                                                                  
-        sudo apt-get purge -y llvm-*-dev                                                                                                                
-        if [[ $ubuntu_ver == "20.04" ]]; then                                                                                                           
-        sudo apt-get purge -y hhvm
+        sudo apt-get purge -y llvm-*-dev
         if [[ $ubuntu_ver == "20.04" ]]; then                                                                                                           
            sudo apt-get purge -y hhvm                                                                                                                      
            sudo apt-get purge -y libgl1-mesa-dri                                                                                                           
