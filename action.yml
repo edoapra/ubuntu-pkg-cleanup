@@ -17,8 +17,6 @@ runs:
         sudo apt-get purge -y mono-* || true
         sudo apt-get purge -y temurin-*-jdk  openjdk-*
         sudo apt-get purge -y powershell || true
-        sudo apt-get purge -y docker-ce containerd.io || true
-        sudo apt-get purge -y docker-ce-cli podman kubectl || true
         sudo apt-get purge -y containernetworking-plugins ||true
         sudo apt-get purge -y libclang-common-*dev || true
         sudo apt-get purge -y snapd || true
