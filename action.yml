@@ -38,6 +38,7 @@ runs:
         myfs="/mnt"
         echo 'du  $myfs'
         sudo du -sk ${myfs}/* |sort -n
+        sudo rm -f ${myfs}/var-lib-docker || true
         left=$(df  --block-size=1073741824 --output=avail ${myfs}|tail -1)
         echo "the /mnt partition has  $left GB free"
         limit=2
