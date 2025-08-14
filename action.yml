@@ -34,4 +34,11 @@ runs:
         dpkg-query -l | grep mesa-dr || true
         dpkg-query -l | grep hhvm || true
         df -h
+        myfs="/mnt"
+        echo 'du  $myfs'
+        sudo du -sk ${myfs}/* |sort -n
+        left=$(df  --block-size=1073741824 --output=avail ${myfs}|tail -1)
+        echo "the /mnt partition has  $left GB free"
+        limit=2
+        if [[ $left -lt $limit ]]; then echo "${myfs} has less than ${limit} GB available" ; exit 1 ;fi
         fi
