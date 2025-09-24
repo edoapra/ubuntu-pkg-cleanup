@@ -46,3 +46,11 @@ runs:
         if [[ $left -lt $limit ]]; then echo "${myfs} has less than ${limit} GB available" ; exit 1 ;fi
         fi
         fi
+    - name: remove docker files
+      run: |
+        sleep 10s
+        sudo systemctl stop docker
+        sudo systemctl stop docker.socket
+        sudo rm -rf /var/lib/docker /home/docker
+        sudo systemctl start docker
+        df -h
