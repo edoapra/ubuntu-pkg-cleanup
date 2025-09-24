@@ -47,6 +47,8 @@ runs:
         fi
         fi
     - name: remove docker files
+      id: docker-cleanup
+      shell: bash
       run: |
         sleep 10s
         sudo systemctl stop docker
