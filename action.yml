@@ -56,3 +56,11 @@ runs:
         sudo rm -rf /var/lib/docker /home/docker
         sudo systemctl start docker
         df -h
+    - name: analyze /var
+      id: analyze-var
+      shell: bash
+      run: |
+        sudo du -sh /var
+        sudo du -sk /var/* | sort -n| tail -4
+        sudo du -sk /var/lib/* |sort -n |tail -4
+        sudo du -sk /var/cache/*| sort -n |tail -4
