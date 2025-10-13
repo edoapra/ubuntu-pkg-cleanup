@@ -8,43 +8,45 @@ runs:
       run: |
         df -h
         if [[ $(uname -s) == "Linux" ]]; then
-        ubuntu_ver=$(cat /etc/os-release | grep VERSION_ID |cut -d \" -f 2)
-        sudo apt-get purge -y azure-cli || true
-        sudo apt-get purge -y google-cloud-cli  google-chrome-stable || true
-        sudo apt-get purge -y firefox || true
-        sudo apt-get purge -y microsoft-edge-stable || true
-        sudo apt-get purge -y dotnet-sdk-*
-        sudo apt-get purge -y mono-* || true
-        sudo apt-get purge -y temurin-*-jdk  openjdk-*
-        sudo apt-get purge -y powershell || true
-        sudo apt-get purge -y containernetworking-plugins ||true
-        sudo apt-get purge -y snapd || true
-        sudo apt-get purge -y mysql-client-core* || true
-        sudo apt-get purge -y python3-botocore || true
-        sudo apt-get purge -y mongodb-* || true
-        sudo apt-get purge -y esl-erlang || true
-        sudo apt-get purge -y r-* || true
-        if [[ $ubuntu_ver == "20.04" ]]; then
-           sudo apt-get purge -y hhvm
-           sudo apt-get purge -y libgl1-mesa-dri
-        fi
-        sudo apt-get -y clean
-        sudo apt-get autoremove -y
-        dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n | tail -30
-        dpkg-query -l | grep mesa-dr || true
-        dpkg-query -l | grep hhvm || true
-        df -h
-        if [ $(uname -m) == x86_64 ]; then
-        myfs="/mnt"
-        echo 'du  $myfs'
-        sudo du -sk ${myfs}/* |sort -n
-        sudo rm -f ${myfs}/var-lib-docker || true
-        sudo rm -f ${myfs}/*img || true
-        left=$(df  --block-size=1073741824 --output=avail ${myfs}|tail -1)
-        echo "the /mnt partition has  $left GB free"
-        limit=2
-        if [[ $left -lt $limit ]]; then echo "${myfs} has less than ${limit} GB available" ; exit 1 ;fi
-        fi
+            ubuntu_ver=$(cat /etc/os-release | grep VERSION_ID |cut -d \" -f 2)
+            sudo apt-get purge -y azure-cli || true
+            sudo apt-get purge -y google-cloud-cli  google-chrome-stable || true
+            sudo apt-get purge -y firefox || true
+            sudo apt-get purge -y microsoft-edge-stable || true
+            sudo apt-get purge -y dotnet-sdk-*
+            sudo apt-get purge -y mono-* || true
+            sudo apt-get purge -y temurin-*-jdk  openjdk-*
+            sudo apt-get purge -y powershell || true
+            sudo apt-get purge -y containernetworking-plugins ||true
+            sudo apt-get purge -y snapd || true
+            sudo apt-get purge -y mysql-client-core* || true
+            sudo apt-get purge -y python3-botocore || true
+            sudo apt-get purge -y mongodb-* || true
+            sudo apt-get purge -y esl-erlang || true
+            sudo apt-get purge -y r-* || true
+            if [[ $ubuntu_ver == "20.04" ]]; then
+                sudo apt-get purge -y hhvm
+                sudo apt-get purge -y libgl1-mesa-dri
+            fi
+            sudo apt-get -y clean
+            sudo apt-get autoremove -y
+            dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n | tail -30
+            dpkg-query -l | grep mesa-dr || true
+            dpkg-query -l | grep hhvm || true
+            df -h
+            if [ $(uname -m) == x86_64 ]; then
+                myfs="/mnt"
+                if [ -d "$myfs" ]; then 
+                    echo 'du  $myfs'
+                    sudo du -sk ${myfs}/* |sort -n
+                    sudo rm -f ${myfs}/var-lib-docker || true
+                    sudo rm -f ${myfs}/*img || true
+                    left=$(df  --block-size=1073741824 --output=avail ${myfs}|tail -1)
+                    echo "the /mnt partition has  $left GB free"
+                    limit=2
+                    if [[ $left -lt $limit ]]; then echo "${myfs} has less than ${limit} GB available" ; exit 1 ;fi
+                fi
+            fi
         fi
     - name: remove docker files
       id: docker-cleanup
