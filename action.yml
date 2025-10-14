@@ -39,7 +39,7 @@ runs:
                 if [ -d "$myfs" ]; then 
                     echo 'du  $myfs'
                     sudo du -sk ${myfs}/* |sort -n
-                    sudo rm -f ${myfs}/var-lib-docker || true
+                    sudo rm -rf ${myfs}/var-lib-docker || true
                     sudo rm -f ${myfs}/*img || true
                     left=$(df  --block-size=1073741824 --output=avail ${myfs}|tail -1)
                     echo "the /mnt partition has  $left GB free"
