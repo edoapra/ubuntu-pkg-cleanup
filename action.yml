@@ -66,7 +66,7 @@ runs:
         sudo du -sk /var/* | sort -n| tail -4
         sudo du -sk /var/lib/* |sort -n |tail -4
         sudo du -sk /var/cache/*| sort -n |tail -4
-  - name: analyze /usr/local
+    - name: analyze /usr/local
       id: analyze-usrlocal
       shell: bash
       run: |
