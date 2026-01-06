@@ -71,6 +71,8 @@ runs:
       shell: bash
       run: |
         sudo rm -rf /usr/local/julia* || true
+        sudo rm -rf /usr/local/share/powershell* || true
+        sudo rm -rf /usr/local/lib/android* || true
         sudo du -sh /usr/local
         sudo du -sk /usr/local/* | sort -n
         sudo du -sk /usr/local/share/* | sort -n
