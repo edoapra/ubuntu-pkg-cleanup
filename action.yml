@@ -77,3 +77,4 @@ runs:
         sudo du -sk /usr/local/* | sort -n
         sudo du -sk /usr/local/share/* | sort -n
         sudo du -sk /usr/local/lib/* | sort -n
+        df -h
