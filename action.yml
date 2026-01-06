@@ -70,5 +70,8 @@ runs:
       id: analyze-usrlocal
       shell: bash
       run: |
+        sudo rm -rf /usr/local/julia* || true
         sudo du -sh /usr/local
         sudo du -sk /usr/local/* | sort -n
+        sudo du -sk /usr/local/share/* | sort -n
+        sudo du -sk /usr/local/lib/* | sort -n
