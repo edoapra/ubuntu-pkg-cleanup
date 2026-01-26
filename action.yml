@@ -36,7 +36,9 @@ runs:
             df -h
             if [ $(uname -m) == x86_64 ]; then
                 myfs="/mnt"
-                if [ -d "$myfs" ]; then 
+                if mount|grep -q $myfs
+                  then
+                    echo existing
                     echo 'du  $myfs'
                     sudo du -sk ${myfs}/* |sort -n
                     sudo rm -rf ${myfs}/var-lib-docker || true
