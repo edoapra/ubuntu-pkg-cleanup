@@ -86,5 +86,7 @@ runs:
         sudo du -sh /usr/local
         sudo du -sk /usr/local/* | sort -n
         sudo du -sk /usr/local/share/* | sort -n
+        if [[ $(uname -s) == "Linux" ]]; then
         sudo du -sk /usr/local/lib/* | sort -n
+        fi
         df -h
