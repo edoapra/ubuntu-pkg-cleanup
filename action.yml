@@ -15,7 +15,6 @@ runs:
             sudo apt-get purge -y microsoft-edge-stable || true
             sudo apt-get purge -y dotnet-sdk-*
             sudo apt-get purge -y mono-* || true
-            sudo apt-get purge -y temurin-*-jdk  openjdk-*
             sudo apt-get purge -y powershell || true
             sudo apt-get purge -y containernetworking-plugins ||true
             sudo apt-get purge -y snapd || true
@@ -27,6 +26,10 @@ runs:
             if [[ $ubuntu_ver == "20.04" ]]; then
                 sudo apt-get purge -y hhvm
                 sudo apt-get purge -y libgl1-mesa-dri
+            fi
+            sudo apt-get purge -y temurin-*-jdk 
+            if [[ $ubuntu_ver != "26.04" ]]; then
+            sudo apt-get purge -y openjdk-*
             fi
             sudo apt-get -y clean
             sudo apt-get autoremove -y

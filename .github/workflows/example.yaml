@@ -22,7 +22,7 @@ jobs:
     runs-on: ${{ matrix.ubuntu_version }}
     steps:
       - name: Check out source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: ./.github/actions/ubuntu-pkg-cleanup
       - name: Ubuntu cleanup
